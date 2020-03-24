@@ -66,17 +66,23 @@ const Pair = ({ brand, model, kms }) => {
   )
 };
 
+class EquipShare extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = { running: true }
+  }
+  render() {
+    const { equipment } = this.props
+    return (
+      <section>
+        <div>{equipment.map((pair, i) => <Pair key={i} brand={pair.brand} model={pair.model} kms={pair.kms} />)}</div>
+        <div><strong>Are we running, state?</strong> {this.state.running ? 'We are running' : 'We are just preparing to run'}</div>
+        <KmsCounter />
+      </section >
+    )
+  }
+}
 
-const EquipShare = ({ equipment }) => {
-  return (
-    <section>
-      <div>{equipment.map((pair, i) => <Pair key={i} brand={pair.brand} model={pair.model} kms={pair.kms} />)}</div>
-      <KmsCounter />
-    </section >
-
-
-  )
-};
 
 ReactDOM.render(
   <div>
