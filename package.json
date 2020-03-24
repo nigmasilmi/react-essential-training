@@ -1,0 +1,28 @@
+{
+  "name": "reactessentialtraining",
+  "version": "1.0.0",
+  "description": "Learning Practice for LinkedIn Learning Course: React Essential Training",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nigmasilmi/react-essential-training.git"
+  },
+  "keywords": [
+    "react",
+    "essentials",
+    "practice",
+    "exercises"
+  ],
+  "author": "Nigma Silmi guided By Eve Porcello, Course Instructor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nigmasilmi/react-essential-training/issues"
+  },
+  "homepage": "https://github.com/nigmasilmi/react-essential-training#readme",
+  "dependencies": {
+    "create-react-app": "^3.4.1"
+  }
+}

@@ -11,46 +11,39 @@ const studyHoursData = {
 
 };
 
-// Component
+const codingPerWeek = (average, codingPerSession) => {
+  return average * codingPerSession;
+};
 
-class MeasureMyNerdness extends React.Component {
+// Function Component
 
-  codingPerWeek(average, codingPerSession) {
-    return average * codingPerSession;
-  }
+const CodingPerWFunk = ({ average, daysPerWeek, codingPerSession }) => {
 
+  return (
+    <section className="funkSection">
+      <div><p>
+        My Average of study days in a week is {average}
+      </p></div>
+      <div><p>
+        I am used to study {daysPerWeek} days per week <br />
+      </p></div>
+      <div><p>
+        It includes theory and {codingPerSession} coding hours per session
+    </p></div>
+      <div><p>
+        It means that my coding hours in a week are: {codingPerWeek(average, codingPerSession)} plus, hours
+    </p></div>
+    </section>
+  )
 
-  render() {
-    const { average, daysPerWeek, codingPerSession } = this.props;
-    return (
-      <section className="sectionWrapper">
-        <div><p>
-          My Average of study days in a week is {average}
-        </p></div>
-        <div><p>
-          I am used to study {daysPerWeek} days per week <br />
-        </p></div>
-        <div><p>
-          It includes theory and {codingPerSession} coding hours per session
-        </p></div>
-        <div><p>
-          It means that my coding hours in a week are: {this.codingPerWeek(average, codingPerSession)} plus, hours
-        </p></div>
-      </section>
-    )
-  }
-
-}
-
-
+};
 
 ReactDOM.render(
-  // Component to render with specific props values if there are any
-  <MeasureMyNerdness
+
+  <CodingPerWFunk
     average={studyHoursData.average}
     daysPerWeek={studyHoursData.daysPerWeek}
     codingPerSession={studyHoursData.codingPerSession}
-
   />,
   document.getElementById("root")
 );
