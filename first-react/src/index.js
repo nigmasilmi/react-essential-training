@@ -1,49 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// Data
-const studyHoursData = {
 
-  average: 6,
-  daysPerWeek: 7,
-  codingPerSession: 4,
-  dummy: "yeah"
-
-};
-
-const codingPerWeek = (average, codingPerSession) => {
-  return average * codingPerSession;
-};
-
-// Function Component
-
-const CodingPerWFunk = ({ average, daysPerWeek, codingPerSession }) => {
-
+const KmsCounter = ({ equipOne, equipTwo }) => {
   return (
-    <section className="funkSection">
-      <div><p>
-        My Average of study days in a week is {average}
-      </p></div>
-      <div><p>
-        I am used to study {daysPerWeek} days per week <br />
-      </p></div>
-      <div><p>
-        It includes theory and {codingPerSession} coding hours per session
-    </p></div>
-      <div><p>
-        It means that my coding hours in a week are: {codingPerWeek(average, codingPerSession)} plus, hours
-    </p></div>
+    <section>
+      <article>
+        <div> <strong>I am the Child component</strong> and this is the Weekley Millage so far: {equipOne} + {equipTwo} </div>
+      </article>
     </section>
   )
+};
 
+const EquipShare = ({ asicsKms, brooksKms }) => {
+  return (
+    <section>
+      <div>The Asics are onboard with {asicsKms} Kms </div>
+      <div>The Brooks are onboard with {brooksKms} Kms </div>
+      <KmsCounter equipOne={asicsKms} equipTwo={brooksKms} />
+    </section>
+  )
 };
 
 ReactDOM.render(
-
-  <CodingPerWFunk
-    average={studyHoursData.average}
-    daysPerWeek={studyHoursData.daysPerWeek}
-    codingPerSession={studyHoursData.codingPerSession}
-  />,
+  <div>
+    <EquipShare asicsKms={50} brooksKms={90} />
+  </div>,
   document.getElementById("root")
+
 );
