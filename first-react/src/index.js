@@ -88,7 +88,18 @@ class EquipShare extends React.Component {
   // using a static property as state
   state = {
     running: true,
-    weights: true
+    weights: true,
+    pericoDeLosPalotes: [],
+    loading: false
+  }
+
+  // using componentDidMount to fetch Data
+
+  componentDidMount() {
+    this.setState({ loading: true })
+    fetch('https://hplussport.com/api/products/order/price/sort/asc/qty/1')
+      .then(data => data.json())
+      .then(pericoDeLosPalotes => this.setState({ pericoDeLosPalotes, loading: false }))
   }
 
 
@@ -105,6 +116,22 @@ class EquipShare extends React.Component {
     const { equipment } = this.props
     return (
       <section>
+        <div>{this.setState.loading
+          ? "Fetching the data"
+          : <div>
+            {this.state.pericoDeLosPalotes.map(product => {
+              return (
+                <div><h3>
+                  {product.name}
+                </h3>
+                  <img src={product.image} height={200}></img>
+                </div>
+              )
+            })
+            }
+          </div>
+
+        }</div>
         <div>{equipment.map((pair, i) =>
           <Pair
             key={i}
