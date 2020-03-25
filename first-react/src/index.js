@@ -63,9 +63,26 @@ const Pair = ({ brand, model, kms, weights }) => {
         The {brand} / {model} are onboard with: {kms} kms
       </h3>
       <h4>Today we are {weights ? 'going to lift weights' : 'not going to lift weights'}</h4>
+      <h2>
+        {weights ? <GotoGym /> : <GoToYoga />}
+      </h2>
     </div>
   )
 };
+
+// simple display component
+// different syntax for writing a function component, minimal but valid
+const GotoGym = () =>
+  <div>
+    Today is Gym Day
+</div>
+
+// another simple display component
+
+const GoToYoga = () =>
+  <div>
+    Today is Yoga Day
+</div>
 
 class EquipShare extends React.Component {
   // using a static property as state
