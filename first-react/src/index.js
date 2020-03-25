@@ -56,29 +56,31 @@ const KmsCounter = () => {
 
 
 
-const Pair = ({ brand, model, kms }) => {
+const Pair = ({ brand, model, kms, weights }) => {
   return (
     <div>
       <h3>
         The {brand} / {model} are onboard with: {kms} kms
       </h3>
+      <h4>Today we are {weights ? 'going to lift weights' : 'not going to lift weights'}</h4>
     </div>
   )
 };
 
 class EquipShare extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { running: true }
-    // binding this
-    this.goToRun = this.goToRun.bind(this)
+  // using a static property as state
+  state = {
+    running: true,
+    weights: true
   }
 
-  // changing the state method
 
-  goToRun() {
+  // changing the state method now binding this in it
+
+  goToRun = () => {
     this.setState(prevState => ({
-      running: !prevState.running
+      running: !prevState.running,
+      weights: !prevState.weights
     }))
   }
 
@@ -86,7 +88,14 @@ class EquipShare extends React.Component {
     const { equipment } = this.props
     return (
       <section>
-        <div>{equipment.map((pair, i) => <Pair key={i} brand={pair.brand} model={pair.model} kms={pair.kms} />)}</div>
+        <div>{equipment.map((pair, i) =>
+          <Pair
+            key={i}
+            brand={pair.brand}
+            model={pair.model}
+            kms={pair.kms}
+            weights={this.state.weights}
+          />)}</div>
         <div><strong>Are we running, state?</strong> {this.state.running ? 'We are running' : 'We are just preparing to run'}</div>
         <button onClick={this.goToRun}><strong>Change it</strong></button>
         <KmsCounter />
