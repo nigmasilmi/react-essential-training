@@ -77,9 +77,9 @@ class EquipShare extends React.Component {
   // changing the state method
 
   goToRun() {
-    this.setState({
-      running: !this.state.running
-    })
+    this.setState(prevState => ({
+      running: !prevState.running
+    }))
   }
 
   render() {
