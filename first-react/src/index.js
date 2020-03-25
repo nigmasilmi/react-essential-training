@@ -121,10 +121,10 @@ class EquipShare extends React.Component {
           : <div>
             {this.state.pericoDeLosPalotes.map(product => {
               return (
-                <div><h3>
+                <div key={product.id}><h3>
                   {product.name}
                 </h3>
-                  <img src={product.image} height={200}></img>
+                  <img src={product.image} height={200} alt={product.name}></img>
                 </div>
               )
             })
