@@ -70,19 +70,31 @@ class EquipShare extends React.Component {
   constructor(props) {
     super(props)
     this.state = { running: true }
+    // binding this
+    this.goToRun = this.goToRun.bind(this)
   }
+
+  // changing the state method
+
+  goToRun() {
+    this.setState({
+      running: !this.state.running
+    })
+  }
+
   render() {
     const { equipment } = this.props
     return (
       <section>
         <div>{equipment.map((pair, i) => <Pair key={i} brand={pair.brand} model={pair.model} kms={pair.kms} />)}</div>
         <div><strong>Are we running, state?</strong> {this.state.running ? 'We are running' : 'We are just preparing to run'}</div>
+        <button onClick={this.goToRun}><strong>Change it</strong></button>
         <KmsCounter />
       </section >
     )
   }
-}
 
+}
 
 ReactDOM.render(
   <div>
